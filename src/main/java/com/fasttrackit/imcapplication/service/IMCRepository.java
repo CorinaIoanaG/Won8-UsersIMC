@@ -9,7 +9,7 @@ import java.util.List;
 @Repository
 public interface IMCRepository extends JpaRepository<User, Integer> {
 
-    List<User> findByUserTown(String name);
+    List<User> findByTown(String name);
     @Query("select u from User u join UserData")
     List<User> getAllUserData();
 

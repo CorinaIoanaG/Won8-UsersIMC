@@ -26,14 +26,14 @@ public class UserData {
     private Date date;
 
     @Column
-    private int userWeight;
+    private int weight;
 
     @Column
-    private float userIMC;
+    private float imc;
 
-    public UserData(Date date, int userWeight, float userIMC) {
+    public UserData(Date date, int weight, float imc) {
         this.date = date;
-        this.userWeight = userWeight;
-        this.userIMC = userIMC;
+        this.weight = weight;
+        this.imc = imc;
     }
 }

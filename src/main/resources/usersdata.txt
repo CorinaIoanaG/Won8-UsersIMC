@@ -1,5 +1,5 @@
-abc|123|Andreea B|Oradea|1.79|a@yahoo.com|12-01-2023^62~18-01-2023^61~29-01-2023^61
+abc|123|Andreea B|Oradea|1.79|a@yahoo.com|12-01-2023^62~18-01-2023^59~29-01-2023^58
 def|456|Darius F|Satu Mare|1.72|d@yahoo.com|11-01-2023^75~25-01-2023^78
 ghe|789|Florina H|Satu Mare|1.65|f@yahoo.com|13-01-2023^62~22-01-2023^60
 klm|012|Marius Z|Oradea|1.75|m@yahoo.com|01-11-2023^85~22-01-2023^84~25-01-2023^84
-nop|765|Catalin S|Satu Mare|1.70|c@yahoo.com|10-01-2023^90~25-01-2023^90
+nop|765|Catalin S|Satu Mare|1.70|c@yahoo.com|10-01-2023^94~25-01-2023^95

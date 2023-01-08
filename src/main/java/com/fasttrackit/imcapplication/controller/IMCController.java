@@ -15,18 +15,16 @@ public class IMCController {
     private final IMCService imcService;
 
     @GetMapping
-    public List<User> getAll(){
-        return imcService.getAll();
+    public List<User> getAll(@RequestParam(required = false) String town) {
+        if (town == null){
+            return imcService.getAll();
+        } else{
+            return imcService.getByTown(town);
+        }
     }
-
-    @GetMapping("{town}")
-    List<User> getByTown(@RequestParam String town){
-        return imcService.getByTown(town);}
 
     @GetMapping("{id}")
     public User getById(@PathVariable int id) {
-        User user = imcService.getById(id);
-        user.getUserData().stream().count();
-        return user;
+        return imcService.getById(id);
     }
 }

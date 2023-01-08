@@ -39,7 +39,7 @@ public class IMCReader {
                 userParts[5], userParts.length > 6 ? parseUsersData(userParts[6],Float.parseFloat(userParts[4])) : List.of());
     }
 
-    private List<UserData> parseUsersData(String usersData, float userHeight) throws ParseException {
+    private List<UserData> parseUsersData(String usersData, float height) throws ParseException {
         String[] elements = usersData.split("~");
         List <UserData> result = new ArrayList<>();
         DateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
@@ -48,7 +48,7 @@ public class IMCReader {
             for (String element : elements) {
                 datas = element.split("\\^");
                 result.add(new UserData(dateFormat.parse(datas[0]), Integer.parseInt(datas[1]),
-                        (float) (Integer.parseInt(datas[1])/Math.pow(userHeight,2))));
+                        (float) (Integer.parseInt(datas[1])/Math.pow(height,2))));
             }
         }
         return result;

@@ -20,22 +20,22 @@ public class User {
     private int id;
 
     @Column
-    private String userName;
+    private String name;
 
     @Column
-    private String userPass;
+    private String pass;
 
     @Column
-    private String userFullName;
+    private String fullName;
 
     @Column
-    private String userTown;
+    private String town;
 
     @Column
-    private float userHeight;
+    private float height;
 
     @Column
-    private String userContact;
+    private String contact;
 
     @OneToMany(mappedBy = "user", cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     @JsonIgnore
