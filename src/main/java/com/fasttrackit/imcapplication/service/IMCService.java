@@ -2,6 +2,7 @@ package com.fasttrackit.imcapplication.service;
 
 import com.fasttrackit.imcapplication.exception.ResourceNotFoundException;
 import com.fasttrackit.imcapplication.model.User;
+import com.fasttrackit.imcapplication.model.UserData;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -28,4 +29,26 @@ public class IMCService {
         return imcRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("User missing ", id));
     }
+
+    public User patch(int id, String name, String town, String contact) {
+        User userToBeUpdated = getById(id);
+        userToBeUpdated.setFullName(name);
+        userToBeUpdated.setTown(town);
+        userToBeUpdated.setContact(contact);
+        return imcRepository.save(userToBeUpdated);
+    }
+
+    public User deleteById(int id) {
+        User userToBeDeleted = getById(id);
+        imcRepository.deleteById(id);
+        return userToBeDeleted;
+    }
+
+    public User addDataToUser(int id, UserData userData) {
+        User user = getById(id);
+        userData.setUser(user);
+        user.getUserData().add(userData);
+        return imcRepository.save(user);
+    }
+
 }

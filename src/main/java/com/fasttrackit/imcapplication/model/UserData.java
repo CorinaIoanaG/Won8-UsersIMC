@@ -31,9 +31,29 @@ public class UserData {
     @Column
     private float imc;
 
+    @Column
+    private String imcRange;
+
     public UserData(Date date, int weight, float imc) {
         this.date = date;
         this.weight = weight;
         this.imc = imc;
+        this.imcRange = getRange(imc);
+    }
+
+    public String getRange(float imc) {
+        if (imc < 18.49) {
+            return "Subponderal";
+        } else if (imc < 25) {
+            return "Greutate normala";
+        } else if (imc < 30) {
+            return "Supraponderal";
+        } else if (imc < 35) {
+            return "Obezitate grad I";
+        } else if (imc < 40) {
+            return "Obezitate grad II";
+        } else {
+            return "Obezitate morbida";
+        }
     }
 }
