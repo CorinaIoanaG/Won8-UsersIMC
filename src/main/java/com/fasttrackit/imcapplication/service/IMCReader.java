@@ -36,19 +36,18 @@ public class IMCReader {
     private User lineToUser(String line) throws ParseException {
         String[] userParts = line.split("\\|");
         return new User(0, userParts[0], userParts[1], userParts[2], userParts[3], Float.parseFloat(userParts[4]),
-                userParts[5], userParts.length > 6 ? parseUsersData(userParts[6],Float.parseFloat(userParts[4])) : List.of());
+                userParts[5], userParts.length > 6 ? parseUsersData(userParts[6], Float.parseFloat(userParts[4])) : List.of());
     }
 
     private List<UserData> parseUsersData(String usersData, float height) throws ParseException {
         String[] elements = usersData.split("~");
-        List <UserData> result = new ArrayList<>();
+        List<UserData> result = new ArrayList<>();
         DateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
         if (elements.length > 0) {
             String[] datas;
             for (String element : elements) {
                 datas = element.split("\\^");
-                result.add(new UserData(dateFormat.parse(datas[0]), Integer.parseInt(datas[1]),
-                        (float) (Integer.parseInt(datas[1])/Math.pow(height,2))));
+                result.add(new UserData(dateFormat.parse(datas[0]), Integer.parseInt(datas[1]), height));
             }
         }
         return result;

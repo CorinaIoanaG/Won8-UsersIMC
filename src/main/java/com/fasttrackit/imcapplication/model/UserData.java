@@ -34,10 +34,10 @@ public class UserData {
     @Column
     private String imcRange;
 
-    public UserData(Date date, int weight, float imc) {
+    public UserData(Date date, int weight, float height) {
         this.date = date;
         this.weight = weight;
-        this.imc = imc;
+        this.imc = (float) (weight / Math.pow(height, 2));
         this.imcRange = getRange(imc);
     }
 
