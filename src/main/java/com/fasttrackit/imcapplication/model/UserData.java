@@ -1,6 +1,7 @@
 package com.fasttrackit.imcapplication.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasttrackit.imcapplication.controller.dto.PatchUserDataRequest;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -17,23 +18,19 @@ public class UserData {
     @Id
     @GeneratedValue
     private int id;
-
     @ManyToOne
     @JsonIgnore
     private User user;
-
     @Column
     private Date date;
-
     @Column
     private int weight;
-
     @Column
     private float imc;
-
     @Column
     private String imcRange;
 
+    // Constructor
     public UserData(Date date, int weight, float height) {
         this.date = date;
         this.weight = weight;
@@ -41,6 +38,7 @@ public class UserData {
         this.imcRange = getRange(imc);
     }
 
+    // Returns imcRange based on imc.
     public String getRange(float imc) {
         if (imc < 18.49) {
             return "Subponderal";

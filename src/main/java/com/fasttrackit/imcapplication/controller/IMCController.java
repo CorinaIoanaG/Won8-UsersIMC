@@ -1,8 +1,8 @@
 package com.fasttrackit.imcapplication.controller;
 
+import com.fasttrackit.imcapplication.controller.dto.PatchUserDataRequest;
 import com.fasttrackit.imcapplication.controller.dto.PatchUserRequest;
 import com.fasttrackit.imcapplication.model.User;
-import com.fasttrackit.imcapplication.model.UserData;
 import com.fasttrackit.imcapplication.service.IMCService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
@@ -18,7 +18,7 @@ public class IMCController {
 
     @GetMapping
     public List<User> getAll(@RequestParam(required = false) String town) {
-        if (town == null || town == "") {
+        if (town.equals(null) || town.equals("")) {
             return imcService.getAll();
         } else {
             return imcService.getByTown(town);
@@ -31,7 +31,7 @@ public class IMCController {
     }
 
     @PatchMapping("{id}")
-    public User patch(@PathVariable int id, @RequestBody PatchUserRequest request){
+    public User patch(@PathVariable int id, @RequestBody PatchUserRequest request) {
         return imcService.patch(id, request.fullName(), request.town(), request.contact());
     }
 
@@ -40,9 +40,14 @@ public class IMCController {
         return imcService.deleteById(id);
     }
 
+    @PostMapping
+    public User add(@RequestBody User user) {
+        return imcService.add(user);
+    }
+
     @PostMapping("{id}/datas")
-    User addDataToUser(@PathVariable int id, @RequestBody UserData userData){
-        return imcService.addDataToUser(id, userData);
+    User addDataToUser(@PathVariable int id, @RequestBody PatchUserDataRequest patchUserDataRequest) {
+        return imcService.addDataToUser(id, patchUserDataRequest);
     }
 
 }
