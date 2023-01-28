@@ -38,8 +38,11 @@ public class IMCReader {
     // Splits a line read from file in User parts and returns users, on by one.
     private User lineToUser(String line) throws ParseException {
         String[] userParts = line.split("\\|");
-        return new User(0, userParts[0], userParts[1], userParts[2], userParts[3], Float.parseFloat(userParts[4]),
-                userParts[5], userParts.length > 6 ? parseUsersData(userParts[6], Float.parseFloat(userParts[4])) : List.of());
+        List<UserData> userData = userParts.length > 6 ? parseUsersData(userParts[6], Float.parseFloat(userParts[4])) : List.of();
+        User user = new User(0, userParts[0], userParts[1], userParts[2], userParts[3], Float.parseFloat(userParts[4]),
+                userParts[5], userData);
+        userData.forEach(userData1 -> userData1.setUser(user));
+        return user;
     }
 
     // Splits the part of the line that contains UserData and returns a list of userdatas.

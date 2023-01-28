@@ -30,6 +30,6 @@ public class User {
     private float height;
     @Column
     private String contact;
-    @OneToMany(mappedBy = "user", cascade = {CascadeType.PERSIST, CascadeType.MERGE}, fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "user", cascade = {CascadeType.ALL}, fetch = FetchType.EAGER)
     private List<UserData> userData;
 }

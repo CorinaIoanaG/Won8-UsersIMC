@@ -1,5 +1,6 @@
 package com.fasttrackit.imcapplication.model;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasttrackit.imcapplication.controller.dto.PatchUserDataRequest;
 import lombok.AllArgsConstructor;
@@ -22,6 +23,7 @@ public class UserData {
     @JsonIgnore
     private User user;
     @Column
+    @JsonFormat(pattern = "dd-MM-yyyy")
     private Date date;
     @Column
     private int weight;
